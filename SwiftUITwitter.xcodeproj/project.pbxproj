@@ -21,7 +21,6 @@
 		CA01FA20289CF78100479C3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA01FA25289CF78100479C3B /* SwiftUITwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUITwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA01FA2B289CF78100479C3B /* SwiftUITwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUITwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA01FA2D289CF78100479C3B /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				CA01FA1D289CF78000479C3B /* Shared */,
-				CA01FA2C289CF78100479C3B /* macOS */,
 				CA01FA26289CF78100479C3B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,14 +66,6 @@
 				CA01FA2B289CF78100479C3B /* SwiftUITwitter.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		CA01FA2C289CF78100479C3B /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				CA01FA2D289CF78100479C3B /* macOS.entitlements */,
-			);
-			path = macOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
