@@ -10,7 +10,29 @@ import SwiftUI
 struct ContentView: View {
     @State private var showMenu = false
     @Environment(\.colorScheme) var colorScheme
+    //if a viewmodel will be used in multiple views, then the viewmodel must be called as a type in the view and .environmentObject() in the main file
+    //if a viewModel will only be used in one view, then it can be created as var viewModel: ViewModel()
+    @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
+        Group{
+            if viewModel.userSession == nil {
+                LoginView()
+            } else {
+                mainInterfaceView
+            }
+        }
+    }
+    
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+extension ContentView {
+    var mainInterfaceView: some View {
         ZStack(alignment: .topLeading) {
             MainTabView()
                .navigationBarHidden(showMenu)
@@ -51,12 +73,5 @@ struct ContentView: View {
         .onAppear{
             showMenu = false
         }
-    }
-    
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

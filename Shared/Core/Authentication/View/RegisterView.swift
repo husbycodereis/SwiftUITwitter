@@ -13,6 +13,7 @@ struct RegisterView: View {
     @State private var fullName = ""
     @State private var password = ""
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var viewModel:AuthViewModel
     var body: some View {
         VStack{
             HeaderView(upperText: "Get Started.", lowerText: "Create your account")
@@ -25,7 +26,7 @@ struct RegisterView: View {
             }.padding(.top, 44)
              .padding(.horizontal,32)
             BlueRoundedButton(labelText: "Sign Up") {
-                print("Sign up canim")
+                viewModel.register(withEmail: emailText, password: password, fullname: fullName, username: userName)
             }
             .padding(.top, 32)
             Spacer()
