@@ -22,7 +22,7 @@ struct RegisterView: View {
                 CustomTextField(imageName: "envelope", placeholderText: "Email", text: $emailText)
                 CustomTextField(imageName: "person", placeholderText: "Username", text: $userName)
                 CustomTextField(imageName: "person", placeholderText: "Full Name", text: $fullName)
-                CustomTextField(imageName: "lock", placeholderText: "Password", text: $password)
+                CustomTextField(imageName: "lock", placeholderText: "Password", isSecureField: true, text: $password)
             }.padding(.top, 44)
              .padding(.horizontal,32)
             BlueRoundedButton(labelText: "Sign Up") {
