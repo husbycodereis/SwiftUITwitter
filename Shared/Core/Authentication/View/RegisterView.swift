@@ -16,6 +16,11 @@ struct RegisterView: View {
     @EnvironmentObject var viewModel:AuthViewModel
     var body: some View {
         VStack{
+            //when isActive is true, the navigation triggers
+            NavigationLink(isActive: $viewModel.didAuthenticateUser) {
+                ProfilePhotoSelectorView()
+            } label: {}
+
             HeaderView(upperText: "Get Started.", lowerText: "Create your account")
             
             VStack(spacing: 40){

@@ -13,8 +13,8 @@ struct CustomTextField: View {
     var isSecureField: Bool? = false
     @Binding var text: String
     var body: some View {
-        VStack{
-            HStack{
+        VStack {
+            HStack {
                 Image(systemName: imageName)
                     .resizable()
                     .scaledToFit()
