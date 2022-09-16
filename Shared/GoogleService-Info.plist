@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>603242780993-t58262gdaq6j4kpv87h2cgjmfb97hla0.apps.googleusercontent.com</string>
+	<string>70462721483-ju3jvmm6pi1av556uh83lduibuk17cfl.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.603242780993-t58262gdaq6j4kpv87h2cgjmfb97hla0</string>
+	<string>com.googleusercontent.apps.70462721483-ju3jvmm6pi1av556uh83lduibuk17cfl</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA-Xut9LASx4Wu5L0Pi1HbDJ03y3771Uww</string>
+	<string>AIzaSyAhyfZGolanWLIwXczQzf7HZ16QOPCmt5k</string>
 	<key>GCM_SENDER_ID</key>
-	<string>603242780993</string>
+	<string>70462721483</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.alirizareisoglu.SwiftUITwitter</string>
 	<key>PROJECT_ID</key>
-	<string>swiftuitwitter-8e97a</string>
+	<string>swiftuitwitter-23fbd</string>
 	<key>STORAGE_BUCKET</key>
-	<string>swiftuitwitter-8e97a.appspot.com</string>
+	<string>swiftuitwitter-23fbd.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:603242780993:ios:bf667aec55491e2b2829c0</string>
+	<string>1:70462721483:ios:258208ff86b247acc97a4e</string>
 </dict>
 </plist>

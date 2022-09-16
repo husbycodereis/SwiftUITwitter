@@ -10,11 +10,14 @@ import SwiftUI
 import Firebase
 
 class AuthViewModel: ObservableObject {
-    @Published var userSession: User?
+    @Published var userSession: FirebaseAuth.User?
     @Published var didAuthenticateUser = false
+    private var tempUserSession: FirebaseAuth.User?
+    
+    private let service = UserService()
     init() {
         self.userSession = Auth.auth().currentUser
-        print("DEBUG: user session is \(String(describing: self.userSession))")
+        self.fetchUser()
     }
 
     func login(withEmail email: String, password: String) {
@@ -36,7 +39,7 @@ class AuthViewModel: ObservableObject {
                 return
             }
             guard let user = result?.user else { return }
-            print("DEBUG: User is \(String(describing: self.userSession?.email))")
+            self.tempUserSession = user
 
             let data = ["email": email, "username": username.lowercased(), "fullname": fullname, "uid": user.uid]
 
@@ -52,5 +55,29 @@ class AuthViewModel: ObservableObject {
     func signOut() {
         userSession = nil
         try? Auth.auth().signOut()
+    }
+
+    func uploadProfileImage(_ image: UIImage) {
+        guard let uid = tempUserSession?.uid else { return }
+        
+        ImageManager.shared.upload(image: image) { [weak self] result in
+          switch result {
+          case .success(let urlString):
+            Firestore.firestore().collection("users")
+              .document(uid)
+              .updateData(["profileImageUrl": urlString]) { _ in
+                self?.userSession = self?.tempUserSession
+               // self?.fetchUser()
+              }
+            
+          case .failure(let error):
+            print(error)
+          }
+        }
+      }
+    
+    func fetchUser(){
+        guard let uid = self.userSession?.uid else { return }
+        service.fetchUser(withUid: uid)
     }
 }

@@ -11,6 +11,7 @@ struct ProfilePhotoSelectorView: View {
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
     @State private var profileImage: Image?
+    @EnvironmentObject var authViewModel: AuthViewModel
 
     //this function converts a UIImage into an Image that can be rendered in SwiftUI
     func loadImage() {
@@ -31,6 +32,7 @@ struct ProfilePhotoSelectorView: View {
                         .modifier(ProfileImageModifier())
                 } else {
                     Image(systemName: "photo.circle")
+                        .resizable()
                         .modifier(ProfileImageModifier())
                 }
 
@@ -40,6 +42,11 @@ struct ProfilePhotoSelectorView: View {
                 ImagePicker(selectedImage: $selectedImage)
             }
                 .padding(.top, 44)
+            if let selectedImage = selectedImage {
+                BlueRoundedButton(labelText: "Continue") {
+                    authViewModel.uploadProfileImage(selectedImage)
+                }
+            }
             Spacer()
         }
             .ignoresSafeArea()
