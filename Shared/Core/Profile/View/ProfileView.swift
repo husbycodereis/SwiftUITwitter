@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ProfileView: View {
     @State private var selectedFilter: TweetFilterViewModel = .tweets
@@ -13,6 +14,11 @@ struct ProfileView: View {
     @Environment(\.presentationMode) var mode
     //TODO: check what namespaces do
     @Namespace var animation
+    private let user: User
+    
+    init(user: User) {
+        self.user = user
+    }
     var body: some View {
         VStack(alignment: .leading){
             headerView
@@ -22,12 +28,7 @@ struct ProfileView: View {
             tweetsView
             Spacer()
         }
-    }
-}
-
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
+        .navigationBarHidden(true)
     }
 }
 
@@ -48,7 +49,10 @@ extension ProfileView{
                         .frame(width: 20, height: 16)
                         .foregroundColor(.white)
                 }
-                Circle()
+                KFImage(URL(string: user.profileImageUrl))
+                    .resizable()
+                    .scaledToFill()
+                    .clipShape(Circle())
                     .frame(width: 72, height: 72)
                     .offset(x: 16, y: 36)
             }
@@ -81,11 +85,11 @@ extension ProfileView{
     var userInfoDetails: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack{
-                Text("Adams")
+                Text(user.fullname)
                 Image(systemName: "checkmark.seal.fill")
                     .foregroundColor(Color(.systemBlue))
             }
-            Text("@some_person")
+            Text("@\(user.username)")
                 .font(.subheadline)
                 .foregroundColor(.gray)
             Text("Some interesting sentence")
