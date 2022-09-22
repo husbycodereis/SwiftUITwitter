@@ -27,7 +27,7 @@ struct FeedView: View {
                     .renderingMode(.template)
                     .frame(width: 60, height: 60)
                     .fullScreenCover(isPresented: $showNewTweetView) {
-                        NewTweetView()
+                        NewTweetView().environmentObject(NewTweetViewModel())
                     }
             }
             .background(.blue)

@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct NewTweetView: View {
     @State private var caption = ""
     //this is a variable that recognizes presentation mode
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var authViewModel : AuthViewModel
+    @EnvironmentObject var tweetViewModel: NewTweetViewModel
     var body: some View {
         VStack{
             HStack{
@@ -23,7 +26,7 @@ struct NewTweetView: View {
                 }
                 Spacer()
                 Button {
-                    print("Tweet")
+                    tweetViewModel.uploadTweet(withCaption: caption)
                 } label: {
                     Text("Tweet")
                         .bold()
@@ -37,11 +40,22 @@ struct NewTweetView: View {
             .padding()
             
             HStack(alignment: .top){
-                Circle()
+                KFImage(URL(string: authViewModel.currentUser?.profileImageUrl ?? ""))
+                    .resizable()
+                    .scaledToFill()
+                    .clipShape(Circle())
                     .frame(width: 64, height: 64)
                 TextArea("Add a new tweet", text: $caption)
+                    .foregroundColor(.black)
             }
             .padding()
+        }
+        //Adds an action to perform when this view detects data emitted by the given publisher.
+        //in this case publisher is didTweetUpload bool value
+        .onReceive(tweetViewModel.$didTweetUpload) { success in
+            if success {
+                presentationMode.wrappedValue.dismiss()
+            }
         }
     }
 }
