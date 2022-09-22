@@ -7,8 +7,9 @@
 
 import Foundation
 
-class NewTweetViewModel: ObservableObject {
-    let tweetService = TweetService()
+class TweetViewModel: ObservableObject {
+   
+    var tweetService = TweetService()
     @Published var didTweetUpload = false
     
     func uploadTweet(withCaption caption: String){

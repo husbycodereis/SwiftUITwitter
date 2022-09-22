@@ -13,7 +13,7 @@ struct NewTweetView: View {
     //this is a variable that recognizes presentation mode
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authViewModel : AuthViewModel
-    @EnvironmentObject var tweetViewModel: NewTweetViewModel
+    @EnvironmentObject var tweetViewModel: TweetViewModel
     var body: some View {
         VStack{
             HStack{

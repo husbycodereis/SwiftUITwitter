@@ -26,4 +26,16 @@ class TweetService {
             completion(true)
         }
     }
+    
+    func fetchTweets(completion: @escaping ([Tweet]) -> Void){
+        Firestore.firestore().collection("tweets").getDocuments { snapshot, _ in
+            guard let documents = snapshot?.documents else { return }
+                //compactMap works as foreach loop
+                // $0 represents each elements inside a list
+                let tweets = documents.compactMap({try? $0.data(as: Tweet.self)})
+            print("DEBUG \(tweets.first?.caption)")
+            completion(tweets)
+        
+        }
+    }
 }
