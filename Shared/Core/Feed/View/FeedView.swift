@@ -37,6 +37,7 @@ struct FeedView: View {
             .padding()
 
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

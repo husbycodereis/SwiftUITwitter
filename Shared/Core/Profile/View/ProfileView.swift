@@ -10,6 +10,7 @@ import Kingfisher
 
 struct ProfileView: View {
     @State private var selectedFilter: TweetFilterViewModel = .tweets
+    @ObservedObject private var profileViewModel: ProfileViewModel
     //makes pop back to previous page
     @Environment(\.presentationMode) var mode
     //TODO: check what namespaces do
@@ -18,6 +19,7 @@ struct ProfileView: View {
     
     init(user: User) {
         self.user = user
+        self.profileViewModel = ProfileViewModel(user: user)
     }
     var body: some View {
         VStack(alignment: .leading){
@@ -150,9 +152,9 @@ extension ProfileView{
     var tweetsView: some View {
         ScrollView {
             LazyVStack{
-                ForEach(0...9, id: \.self){ _ in
-//                    TweetRowView()
-//                        .padding()
+                ForEach(profileViewModel.tweets){ tweet in
+                    TweetRowView(tweet: tweet)
+                        .padding()
                 }
             }
         }
